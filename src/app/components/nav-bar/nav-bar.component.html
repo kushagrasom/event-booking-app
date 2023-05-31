@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <div class="navbar__wrapper event-page">
+    <div class="navbar__left">
+      <img
+        src="https://alvimurtaza.github.io/Interview-Front-end/images/l3-l4-engineer/logo.png"
+        alt="Navbar logo"
+      />
+    </div>
+    <div
+      class="navbar__right"
+      [ngClass]="{ 'navbar-expanded': isNavbarExpanded }"
+    >
+      <a routerLink="event-listing">Events</a>
+    </div>
+    <div
+      class="navbar__hamburger"
+      (click)="toggleMenu()"
+      [ngClass]="{ 'navbar-expanded': isNavbarExpanded }"
+    >
+      <div class="navbar__hamburger-icon">
+        <img
+          [src]="
+            'https://alvimurtaza.github.io/Interview-Front-end/images/l3-l4-engineer/' +
+            (isNavbarExpanded ? 'close.png' : 'hamburger.png')
+          "
+          alt="Navbar icon"
+        />
+      </div>
+    </div>
+    <div
+      class="navbar__menu"
+      [ngClass]="{ 'navbar-expanded': isNavbarExpanded }"
+    >
+      <div class="navbar__menu-content">
+        <a routerLink="event-listing" (click)="handleNavCLose()">Events</a>
+      </div>
+    </div>
+  </div>
+</nav>

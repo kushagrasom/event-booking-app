@@ -1,0 +1,166 @@
+@use "../../../styles.scss" as mixin;
+
+.event-cards {
+  margin-bottom: 64px;
+  margin-top: 64px;
+
+  &__card {
+    align-items: stretch;
+    background: #ffffff;
+    border-bottom: 1px solid #d5d5d5;
+    display: grid;
+    grid-template-columns: 80% 20%;
+
+    @include mixin.bp(medium) {
+      border: 1px solid #d5d5d5;
+      border-radius: 4px;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+      grid-template-columns: 30% 60% 10%;
+    }
+
+    @include mixin.bp(large) {
+      grid-template-columns: auto;
+      text-align: center;
+    }
+
+    &-button {
+      margin: auto 24px auto auto;
+
+      @include mixin.bp(large) {
+        margin: auto 24px 24px;
+      }
+
+      button {
+        align-items: center;
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        font: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        gap: 10px;
+        height: auto;
+        justify-content: center;
+        line-height: 18px;
+        outline: inherit;
+        padding: 0;
+        width: 100%;
+
+        @include mixin.bp(large) {
+          border: 2px solid #fc732f;
+          border-radius: 4px;
+          color: #fc732f;
+          padding: 16px;
+          width: 100%;
+
+          &[disabled] {
+            border: 2px solid #d5d5d5;
+            border-radius: 4px;
+            color: #757575;
+            cursor: default;
+          }
+        }
+      }
+
+      &--text {
+        display: none;
+        @include mixin.bp(large) {
+          display: block;
+        }
+      }
+    }
+
+    &-copy {
+      display: block;
+      padding: 24px 24px 24px 0;
+
+      @include mixin.bp(medium) {
+        padding: 24px;
+      }
+
+      @include mixin.bp(large) {
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+
+    &-desc {
+      @include mixin.font-styles;
+      display: grid;
+    }
+
+    &-img {
+      display: none;
+
+      @include mixin.bp(medium) {
+        display: block;
+        margin: 20px;
+      }
+
+      @include mixin.bp(large) {
+        display: block;
+        margin: 0;
+      }
+
+      img {
+        border-radius: 4px;
+        height: 100%;
+        width: 100%;
+
+        @include mixin.bp(large) {
+          border-radius: 4px 4px 0px 0px;
+          height: auto;
+        }
+      }
+    }
+
+    &-name {
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 27px;
+        padding: 24px 24px 24px 0;
+
+        @include mixin.bp(medium) {
+          padding: 24px;
+        }
+      }
+    }
+
+    &--avl-seats {
+      span {
+        color: #fc732f;
+        font-weight: 800;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 24px;
+  }
+
+  &__wrapper {
+    display: block;
+
+    @include mixin.bp(medium) {
+      display: grid;
+      grid-gap: 20px;
+    }
+
+    @include mixin.bp(large) {
+      display: grid;
+      grid-auto-rows: auto;
+      grid-gap: 32px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<app-search-bar
+  (searchTextEvent)="getFilterEventsList($event)"
+></app-search-bar>
+<div *ngIf="filteredEventsList.length === 0" class="event-page">
+  No results found!
+</div>
+
+<div class="event-cards event-page">
+  <h1 class="event-cards__title" *ngIf="filteredEventsList.length !== 0">
+    Events ({{ eventsList.length }})
+  </h1>
+  <div class="event-cards__wrapper">
+    <div class="event-cards__card" *ngFor="let event of filteredEventsList">
+      <div class="event-cards__card-img">
+        <img [src]="event.imageUrl" [alt]="event.name" />
+      </div>
+
+      <div class="event-cards__card-desc">
+        <div class="event-cards__card-name">
+          <h3>{{ event.name }}</h3>
+        </div>
+        <div class="event-cards__card-copy">
+          <p>{{ event.date }}</p>
+          <p class="event-cards__card--avl-seats">
+            Available Seats: <span>{{ event.seatsAvailable }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="event-cards__card-button">
+        <button
+          (click)="bookEvent(event.id)"
+          [disabled]="event.seatsAvailable === 0 ? true : false"
+        >
+          <img
+            [src]="
+              'https://alvimurtaza.github.io/Interview-Front-end/images/l3-l4-engineer/' +
+              (event.seatsAvailable === 0 ? 'sold-out.png' : 'book.png')
+            "
+            alt="btn-logo"
+          />
+          <span class="event-cards__card-button--text">
+            {{ event.seatsAvailable === 0 ? "Sold Out" : "Book Now" }}
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
